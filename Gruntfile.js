@@ -21,6 +21,21 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      build: {
+        src:  'public/lib/*.js',
+        dest: 'public/libs.min.js'
+      }
+    },
+
+    concat: {
+
+      dist: {
+        src: [
+            'node_modules/**/*.js',
+            'public/**/*.js'
+        ],
+        dest: 'app/production.js',
+      }
     },
 
     jshint: {
@@ -38,6 +53,7 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+
     },
 
     watch: {
@@ -105,8 +121,9 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
+    
   ]);
 
+grunt.registerTask('default', ['concat', 'uglify']);
 
 };
